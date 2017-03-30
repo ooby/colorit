@@ -1,0 +1,47 @@
+{
+  "name": "workaday",
+  "version": "0.0.1",
+  "description": "b&w photo colorizer",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node .",
+    "postinstall": "bower install && grunt build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ooby/workaday.git"
+  },
+  "keywords": [
+    "black",
+    "and",
+    "white",
+    "photo",
+    "colorize"
+  ],
+  "author": "Afanasy Argunov",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^2.2.0",
+    "base64-stream": "^0.1.3",
+    "busboy": "^0.2.14",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.2",
+    "morgan": "^1.8.1",
+    "nconf": "^0.8.4",
+    "python-shell": "^0.4.0",
+    "bower": "^1.8.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-uglify": "^2.2.0",
+    "grunt-version": "^1.1.1"
+  },
+  "bugs": {
+    "url": "https://github.com/ooby/workaday/issues"
+  },
+  "homepage": "https://github.com/ooby/workaday#readme"
+}

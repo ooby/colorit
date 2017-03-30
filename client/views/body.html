@@ -1,0 +1,18 @@
+<md-card ng-init="init()">
+    <md-card-title>
+        <md-card-title-text>
+            <h3>Выберите свое фото</h3>
+            <p>Качество колоризации зависит от качества черно-белой фотографии</p>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-content layout="column">
+        <div>
+            <img id="result" />
+        </div>
+        <div flow-init flow-files-submitted="uploadFiles($files, $event, $flow);" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
+            flow-name="flow" flow-upload-started="uploadStart($flow);" flow-file-success="fileUploadSucces($file, $message)"
+            flow-complete="fileUploadsComplete();">
+            <input type="file" flow-attrs="{accept:'image/*'}" flow-btn/>
+        </div>
+    </md-card-content>
+</md-card>
