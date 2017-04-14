@@ -1,5 +1,5 @@
 'use strict';
-angular.module('workaday.services', [])
+angular.module('colorit.services', [])
     .factory('Process', function ($q, $http, $apiEndpoint, $window, $rootScope) {
         var processFactory = {};
         processFactory.get = function () {

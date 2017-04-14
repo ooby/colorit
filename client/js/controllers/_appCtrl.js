@@ -1,8 +1,10 @@
 'use strict';
-angular.module('workaday.controllers', ['workaday.services'])
+angular.module('colorit.controllers', ['colorit.services'])
     .controller('AppCtrl', function ($apiEndpoint, $scope, $rootScope, $mdToast, $window, $q, Process) {
         $rootScope.processing = false;
         $scope.result = {};
+        $scope.settings = false;
+        $scope.denoise = {};
         var fpProc = function () {
             var d = $q.defer();
             fp.get(function (r, c) {
@@ -18,9 +20,12 @@ angular.module('workaday.controllers', ['workaday.services'])
                 });
         };
         $scope.uploadStart = function ($flow) {
-            $flow.opts.target = "api/process";
+            $flow.opts.target = 'api/process';
             $flow.opts.headers = { 'fingerprint': $window.localStorage.getItem('fingerprint') };
             $flow.opts.testChunks = false;
+            if ($scope.settings || $scope.denoise.check) {
+                $flow.query = { denoise: $scope.denoise };
+            }
         };
         $scope.fileUploadSucces = function ($file, $message) {
             $rootScope.processing = false;

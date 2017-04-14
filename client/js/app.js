@@ -1,8 +1,8 @@
 'use strict';
 var apiURL = window.location.origin + '/';
 var fp = new Fingerprint2();
-angular.module('workaday', ['flow', 'ngRoute', 'ngMaterial', 'ngMdIcons', 'ngMessages', 'ngAria', 'ngAnimate',
-    'workaday.services', 'workaday.controllers'])
+angular.module('colorit', ['flow', 'ngRoute', 'ngMaterial', 'ngMdIcons', 'ngMessages', 'ngAria', 'ngAnimate',
+    'colorit.services', 'colorit.controllers'])
     .constant('$apiEndpoint', {
         url: apiURL
     })
