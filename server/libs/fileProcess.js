@@ -35,7 +35,9 @@ exports.sendFile = function (req, res, next) {
         });
 };
 exports.clean = function (req, res, next) {
-    var rm = spawn('rm', ['-f', '/tmp/' + req.fingerprint, '/tmp/' + req.fingerprint + '.out.png']);
-    rm.stderr.on('data', function (se) { });
-    rm.stdout.on('end', function () { });
+    setTimeout(function () {
+        var rm = spawn('rm', ['-f', '/tmp/' + req.fingerprint, '/tmp/' + req.fingerprint + '.out.png']);
+        rm.stderr.on('data', function (se) { });
+        rm.stdout.on('end', function () { });
+    }, 20000);
 };
