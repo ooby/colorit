@@ -29,10 +29,10 @@ exports.sendFile = function (req, res, next) {
     var filestream = fs.createReadStream(file);
     filestream
         .pipe(encode)
-        .pipe(res)
-        .on('finish', function () {
+        .pipe(res);
+        /*.on('finish', function () {
             next();
-        });
+        });*/
 };
 exports.clean = function (req, res, next) {
     setTimeout(function () {
