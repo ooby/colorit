@@ -38,6 +38,6 @@ module.exports = function (express) {
     proc.use(denoise);
     proc.use(fileProcess);
     proc.post('/', sendFile);
-    //proc.use(clean);
+    proc.use(clean);
     return proc;
 };

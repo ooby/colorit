@@ -22,17 +22,23 @@ exports.fileProcess = function (req, res, next) {
 exports.sendFile = function (req, res, next) {
     var encode = base64.encode();
     var file = '/tmp/' + req.fingerprint + '.out.png';
-    var filename = path.basename(file);
-    var mimetype = mime.lookup(file);
-    res.setHeader('Content-disposition', 'attachment; filename=' + filename);
-    res.setHeader('Content-type', mimetype);
-    var filestream = fs.createReadStream(file);
-    filestream
-        .pipe(encode)
-        .pipe(res);
-        /*.on('finish', function () {
-            next();
-        });*/
+    fs.access(file, function (e) {
+        if (!e) {
+            var filename = path.basename(file);
+            var mimetype = mime.lookup(file);
+            res.setHeader('Content-disposition', 'attachment; filename=' + filename);
+            res.setHeader('Content-type', mimetype);
+            var filestream = fs.createReadStream(file);
+            filestream
+                .pipe(encode)
+                .pipe(res)
+                .on('finish', function () {
+                    next();
+                });
+        } else {
+            res.json(sme(false, 'file_not_processed', null));
+        }
+    });
 };
 exports.clean = function (req, res, next) {
     setTimeout(function () {
