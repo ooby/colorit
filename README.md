@@ -4,7 +4,7 @@
 
 ## Что это и как работает?
 
-Простой веб-сервис для колоризации черно-белых фотографий на основе алгоритмов нейронной сети [Colorful Image Colorizarion](http://richzhang.github.io/colorization)
+Простой веб-сервис для колоризации черно-белых фотографий на основе алгоритмов нейронной сети [Colorful Image Colorization](http://richzhang.github.io/colorization)
 Протестировано на Ubuntu 16.04, 16.10
 
 ## Зависимости
