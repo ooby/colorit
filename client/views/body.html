@@ -34,8 +34,8 @@
             <md-button class="md-primary md-raised" type="file" flow-attrs="{accept:'image/*'}" flow-btn>{{ 'BUTTON' | translate }}</md-button>
             <md-button class="md-raised md-warn md-hue-2" ng-click="toggleLng()">{{ $root.language }}</md-button>
         </md-card-actions>
+        <div>
+            <img id="result" style="max-height:50vh;" />
+        </div>
     </md-card-content>
-    <div>
-        <img id="result" />
-    </div>
 </md-card>
