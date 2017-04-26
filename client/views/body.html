@@ -1,8 +1,8 @@
-<md-card ng-init="init()">
+<md-card>
     <md-card-title>
         <md-card-title-text>
-            <h3>Выберите свое фото</h3>
-            <p>Качество колоризации зависит от качества черно-белой фотографии</p>
+            <h3>{{ 'CHOOSE' | translate }}</h3>
+            <p>{{ 'CREDS' | translate }}</p>
         </md-card-title-text>
     </md-card-title>
     <md-card-content layout="column">
@@ -28,13 +28,14 @@
                 <input ng-disabled="!denoise.check" type="number" step="any" name="rate" ng-model="denoise.searchWindowSize" min="1" max="100" />
             </md-input-container>
         </div>-->
-        <div>
-            <img id="result" />
-        </div>
-        <div flow-init flow-files-submitted="uploadFiles($files, $event, $flow);" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]"
-            flow-name="flow" flow-upload-started="uploadStart($flow);" flow-file-success="fileUploadSucces($file, $message)"
-            flow-complete="fileUploadsComplete();">
-            <input type="file" flow-attrs="{accept:'image/*'}" flow-btn/>
-        </div>
+        <md-card-actions layout="row" layout-align="start center" flow-init flow-files-submitted="uploadFiles($files, $event, $flow);"
+            flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-name="flow" flow-upload-started="uploadStart($flow);"
+            flow-file-success="fileUploadSucces($file, $message)" flow-complete="fileUploadsComplete();">
+            <md-button class="md-primary md-raised" type="file" flow-attrs="{accept:'image/*'}" flow-btn>{{ 'BUTTON' | translate }}</md-button>
+            <md-button class="md-raised md-warn md-hue-2" ng-click="toggleLng()">{{ $root.language }}</md-button>
+        </md-card-actions>
     </md-card-content>
+    <div>
+        <img id="result" />
+    </div>
 </md-card>

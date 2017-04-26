@@ -70,8 +70,7 @@ module.exports = function (grunt) {
                         'angular-translate/angular-translate.min.js',
                         'angular-material-icons/angular-material-icons.min.js',
                         'angular-simple-logger/dist/angular-simple-logger.min.js',
-                        'moment/min/moment-with-locales.min.js',
-                        'fingerprintjs2/dist/fingerprint2.min.js'
+                        'moment/min/moment-with-locales.min.js'
                     ],
                     dest: '<%= project.out %>/js',
                     flatten: true

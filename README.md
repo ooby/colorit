@@ -1,62 +1,46 @@
-# [Проект КОЛОРИТ](https://colorit.gross-tech.ru/)
+# [Colorit project](https://colorit.gross-tech.ru/)
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-## Что это и как работает?
+## How it works?
 
-Простой веб-сервис для колоризации черно-белых фотографий на основе алгоритмов нейронной сети [Colorful Image Colorization](http://richzhang.github.io/colorization)
-Протестировано на Ubuntu 16.04, 16.10
+Simple Demo web-service powered with [Colorful Image Colorization](http://richzhang.github.io/colorization)
 
-## Зависимости
+Tested in Ubuntu 16.04, 16.10
 
-Чтобы собрать и запустить надо установить и настроить следующие пакеты:
-1. [Caffe](http://caffe.berkeleyvision.org/), есть очень подробная пошаговая инструкция по установке на Ubuntu [здесь](https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide)
+## Dependencies
+
+To build and run first install these packages:
+1. [Caffe](http://caffe.berkeleyvision.org/), very detailed `how-to` for installing in Ubuntu located [here](https://github.com/BVLC/caffe/wiki/Ubuntu-16.04-or-15.10-Installation-Guide)
 2. [node.js](https://nodejs.org/)
 3. nginx
 ```bash
 sudo apt-get install nginx
 ```
-4. [mongodb](https://docs.mongodb.com/manual/tutorial/install-mongodb-enterprise-on-ubuntu/)
-5. python-tk
+4. python-tk
 ```bash
 sudo apt-get install python-tk
 ```
 
-## Сборка
+## Building
 
-1. Скачивание и установка компонентов веб-сервиса
+1. Download npm packages
 ```bash
 npm install
 ```
-2. Создать файл конфигурации `server/config/config.json`
-```json
-{
-  "mongoose": {
-    "uri": "mongodb://localhost:27017/colorit",
-    "options": {
-      "server": {
-        "socketOptions": {
-          "keepAlive": 1
-        }
-      }
-    }
-  },
-  "delay": 600
-}
-```
-3. Скачивание и установка колоризатора. Будет установлен в `/opt/col_distr`
+2. Download colorizer. Will be installed in `/opt/col_distr`
 ```bash
 sudo bash get_colorizer.sh
 ```
-4. Сборка файлов фронтенда и копирование конфигурации nginx. В файле `nginx/application.conf` необходимо указать верное расположение сертификатов SSL
+3. Frontend building and nginx configs copying. In `nginx/application.conf` SSL certificates location needed
 ```bash
 sudo bash deploy_client.sh
 ```
-Чтобы собрать и запустить для разработки и отладки:
+To deploy for development purposes:
 ```bash
 sudo bash deploy_client.develop.sh
 ```
-5. Запуск сервиса
+4. Start service
 ```bash
 npm start
 ```

@@ -7,21 +7,21 @@ var base64 = require('base64-stream');
 exports.saveFile = function (req, res, next) {
     var busboy = new require('busboy')({ headers: req.headers });
     busboy.on('file', function (fieldname, file, filename, encoding, mimetype) {
-        var saveTo = path.join('/tmp', req.fingerprint);
+        var saveTo = path.join('/tmp', req.uid);
         file.pipe(fs.createWriteStream(saveTo));
     });
     req.pipe(busboy);
     busboy.on('finish', function () { next(); });
 };
 exports.fileProcess = function (req, res, next) {
-    var arg = ['colorize.py', '/tmp/' + req.fingerprint, '/tmp/' + req.fingerprint + '.out.png'];
+    var arg = ['colorize.py', '/tmp/' + req.uid, '/tmp/' + req.uid + '.out.png'];
     var py = spawn('python', arg);
     py.stderr.on('data', function (se) { });
     py.stdout.on('end', function () { next(); });
 };
 exports.sendFile = function (req, res, next) {
     var encode = base64.encode();
-    var file = '/tmp/' + req.fingerprint + '.out.png';
+    var file = '/tmp/' + req.uid + '.out.png';
     fs.access(file, function (e) {
         if (!e) {
             var filename = path.basename(file);
@@ -41,9 +41,7 @@ exports.sendFile = function (req, res, next) {
     });
 };
 exports.clean = function (req, res, next) {
-    setTimeout(function () {
-        var rm = spawn('rm', ['-f', '/tmp/' + req.fingerprint, '/tmp/' + req.fingerprint + '.out.png']);
-        rm.stderr.on('data', function (se) { });
-        rm.stdout.on('end', function () { });
-    }, 20000);
+    var rm = spawn('rm', ['-f', '/tmp/' + req.uid, '/tmp/' + req.uid + '.out.png']);
+    rm.stderr.on('data', function (se) { });
+    rm.stdout.on('end', function () { });
 };

@@ -2,9 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 
-var config = require('./config');
-var mongoose = require('./libs/mongoose');
-
 var http = require('http');
 var app = express();
 var server = http.createServer(app);

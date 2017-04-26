@@ -1,24 +1,22 @@
 'use strict';
 angular.module('colorit.controllers', ['colorit.services'])
-    .controller('AppCtrl', function ($apiEndpoint, $scope, $rootScope, $mdToast, $window, $q, Process) {
+    .controller('AppCtrl', function ($apiEndpoint, $scope, $rootScope, $mdToast, $window, $q, $translate) {
         $rootScope.processing = false;
+        $rootScope.language = 'English?';
         $scope.result = {};
         $scope.settings = false;
         $scope.denoise = {};
-        var fpProc = function () {
-            var d = $q.defer();
-            fp.get(function (r, c) {
-                d.resolve(r);
-            });
-            return d.promise;
+
+        $scope.toggleLng = function () {
+            if ($rootScope.language === 'English?') {
+                $rootScope.language = 'Русский?';
+                $translate.use('eng');
+            } else {
+                $rootScope.language = 'English?';
+                $translate.use('rus');
+            }
         };
-        $scope.init = function () {
-            fpProc()
-                .then(function (d) {
-                    $window.localStorage.setItem('fingerprint', d);
-                    Process.get();
-                });
-        };
+
         $scope.uploadStart = function ($flow) {
             $flow.opts.target = 'api/process';
             $flow.opts.headers = { 'fingerprint': $window.localStorage.getItem('fingerprint') };
