@@ -6,28 +6,18 @@
         </md-card-title-text>
     </md-card-title>
     <md-card-content layout="column">
-        <!--<div>
-            <md-checkbox ng-disabled ng-model="settings" aria-label="Настройки">
-                Настройки
+        <div layout="row">
+            <md-checkbox ng-model="normalizeCheck" aria-label="Настройки">
+                {{ 'GRAY_NORMALIZE' | translate }}
+            </md-checkbox>
+            <md-checkbox ng-model="denoiseCheck" aria-label="Настройки">
+                {{ 'DENOISE' | translate }}
             </md-checkbox>
         </div>
-        <div ng-if="settings">
-            <md-checkbox ng-model="denoise.check" aria-label="Настройки">
-                Применить подавление шума
-            </md-checkbox>
-            <md-input-container class="md-block">
-                <label>H - параметр силы подавления шума, чем больше значение, тем сильнее размытие</label>
-                <input ng-disabled="!denoise.check" type="number" step="any" name="rate" ng-model="denoise.h" min="0" max="100" />
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>TemplateWindowSize - окно подавления шума, чем больше, тем шире применения размытия</label>
-                <input ng-disabled="!denoise.check" type="number" step="any" name="rate" ng-model="denoise.templateWindowSize" min="1" max="100" />
-            </md-input-container>
-            <md-input-container class="md-block">
-                <label>SearchWindowSize - окно для вычисления общего значения, дает среднее значение</label>
-                <input ng-disabled="!denoise.check" type="number" step="any" name="rate" ng-model="denoise.searchWindowSize" min="1" max="100" />
-            </md-input-container>
-        </div>-->
+        <!--<md-input-container class="md-block">
+            <label>{{ 'DENOISE_H', | translate }}</label>
+            <input type="number" step="any" name="rate" ng-model="denoiseH" min="0" max="100" />
+        </md-input-container>-->
         <md-card-actions layout="row" layout-align="start center" flow-init flow-files-submitted="uploadFiles($files, $event, $flow);"
             flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" flow-name="flow" flow-upload-started="uploadStart($flow);"
             flow-file-success="fileUploadSucces($file, $message)" flow-complete="fileUploadsComplete();">

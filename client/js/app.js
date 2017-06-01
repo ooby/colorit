@@ -25,11 +25,17 @@ angular.module('colorit', ['pascalprecht.translate', 'flow', 'ngSanitize', 'ngRo
     })
     .config(function ($translateProvider) {
         $translateProvider.translations('rus', {
+            GRAY_NORMALIZE: 'Выровнять баланс серого',
+            DENOISE: 'Применить подавление шума',
+            DENOISE_H: 'H - сила подавления шума, чем больше значение, тем сильнее размытие',
             CHOOSE: 'Колоризация черно-белых фотографий. Выберите свое фото',
             CREDS: 'Качество колоризации зависит от качества черно-белой фотографии',
             BUTTON: 'Выбрать файл'
         });
         $translateProvider.translations('eng', {
+            GRAY_NORMALIZE: 'Gray normalize',
+            DENOISE: 'Noise reducing',
+            DENOISE_H: 'H - denoise strength',
             CHOOSE: 'Black and white photo colorization. Choose your photo',
             CREDS: 'Quality of colorization depends on quality of your black and white photo',
             BUTTON: 'Select file'

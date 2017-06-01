@@ -19,11 +19,13 @@ angular.module('colorit.controllers', ['colorit.services'])
 
         $scope.uploadStart = function ($flow) {
             $flow.opts.target = 'api/process';
-            $flow.opts.headers = { 'fingerprint': $window.localStorage.getItem('fingerprint') };
-            $flow.opts.testChunks = false;
-            if ($scope.settings || $scope.denoise.check) {
-                $flow.query = { denoise: $scope.denoise };
+            if ($scope.denoiseCheck) {
+                $flow.opts.headers.denoise = $scope.denoiseCheck;
             }
+            if ($scope.normalizeCheck) {
+                $flow.opts.headers.normalize = $scope.normalizeCheck;
+            }
+            $flow.opts.testChunks = false;
         };
         $scope.fileUploadSucces = function ($file, $message) {
             $rootScope.processing = false;
